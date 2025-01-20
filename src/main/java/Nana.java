@@ -39,6 +39,45 @@ public class Nana {
                             "     Nice! I've marked this task as undone:\n" +
                             "       [ ] " + tasks[taskNumber - 1].getDescription() + "\n" +
                             "    ____________________________________________________________");
+                } else if (input.equals("todo")) {
+                    String taskName = scanner.nextLine();
+                    tasks[taskCount] = new Todo(taskName);
+                    taskCount++;
+                    System.out.println("    ____________________________________________________________\n" +
+                            "     Got it. I've added this task:\n" + "       " + tasks[taskCount - 1].toString() + "\n" +
+                            "     Now you have " + taskCount + " tasks in the list.\n" +
+                            "    ____________________________________________________________");
+                } else if (input.equals("deadline")) {
+                    scanner.useDelimiter(" /by");
+                    String taskName = scanner.next();
+                    scanner.useDelimiter(" ");
+                    scanner.next();
+                    String by = scanner.nextLine();
+                    scanner.useDelimiter("\\p{javaWhitespace}+");
+
+                    tasks[taskCount] = new Deadline(taskName, by);
+                    taskCount++;
+                    System.out.println("    ____________________________________________________________\n" +
+                            "     Got it. I've added this task:\n" + "       " + tasks[taskCount - 1] + "\n" +
+                            "     Now you have " + taskCount + " tasks in the list.\n" +
+                            "    ____________________________________________________________");
+                } else if (input.equals("event")) {
+                    scanner.useDelimiter(" /from");
+                    String taskName = scanner.next();
+                    scanner.useDelimiter(" ");
+                    scanner.next();
+                    scanner.useDelimiter(" /to");
+                    String startTime = scanner.next();
+                    scanner.useDelimiter(" ");
+                    scanner.next();
+                    String endTime = scanner.nextLine();
+                    scanner.useDelimiter("\\p{javaWhitespace}+");
+                    tasks[taskCount] = new Event(taskName, startTime, endTime);
+                    taskCount++;
+                    System.out.println("    ____________________________________________________________\n" +
+                            "     Got it. I've added this task:\n" + "       " + tasks[taskCount - 1] + "\n" +
+                            "     Now you have " + taskCount + " tasks in the list.\n" +
+                            "    ____________________________________________________________");
                 } else {
 
                     String taskName = input + scanner.nextLine();
