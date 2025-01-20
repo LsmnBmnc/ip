@@ -7,12 +7,12 @@ public class Nana {
                 "     What can I do for you?\n" +
                 "    ____________________________________________________________");
 
-        String[] tasks = new String[100];
+        Task[] tasks = new Task[100];
 
         int taskCount = 0;
 
         while (true) {
-            String input = scanner.nextLine();
+            String input = scanner.next();
             if (input.equals("bye")) {
                 System.out.println("    ____________________________________________________________\n" +
                         "     Bye. Hope to see you again soon!\n" +
@@ -25,11 +25,28 @@ public class Nana {
                         System.out.println("     " + (i + 1) + ". " + tasks[i]);
                     }
                     System.out.println("    ____________________________________________________________");
+                } else if (input.equals("mark")) {
+                    int taskNumber = scanner.nextInt();
+                    tasks[taskNumber - 1].markAsDone();
+                    System.out.println("    ____________________________________________________________\n" +
+                            "     Nice! I've marked this task as done:\n" +
+                            "       [X] " + tasks[taskNumber - 1].getDescription() + "\n" +
+                            "    ____________________________________________________________");
+                } else if (input.equals("unmark")) {
+                    int taskNumber = scanner.nextInt();
+                    tasks[taskNumber - 1].markAsUndone();
+                    System.out.println("    ____________________________________________________________\n" +
+                            "     Nice! I've marked this task as undone:\n" +
+                            "       [ ] " + tasks[taskNumber - 1].getDescription() + "\n" +
+                            "    ____________________________________________________________");
                 } else {
-                    tasks[taskCount] = input;
+
+                    String taskName = input + scanner.nextLine();
+
+                    tasks[taskCount] = new Task(taskName);
                     taskCount++;
                     System.out.println("    ____________________________________________________________\n" +
-                            "     added: " + input + "\n" +
+                            "     added: " + taskName + "\n" +
                             "    ____________________________________________________________");
                 }
 
