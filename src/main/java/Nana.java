@@ -1,7 +1,8 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 public class Nana {
 
-    private static Task[] tasks = new Task[100];
+    private static ArrayList<Task> tasks = new ArrayList<>();
     private static int taskCount = 0;
 
     public static void processInput (String input, Scanner scanner) throws NanaException {
@@ -20,7 +21,10 @@ public class Nana {
             addDeadline(scanner);
         } else if (input.equals("event")) {
             addEvent(scanner);
-        } else {
+        } else if (input.equals("delete")) {
+            deleteTask(scanner);
+        }
+        else {
             addTask(input, scanner);
         }
     }
@@ -29,26 +33,26 @@ public class Nana {
         System.out.println("    ____________________________________________________________");
         System.out.println("     Here are the tasks in your list:");
         for (int i = 0; i < taskCount; i++) {
-            System.out.println("     " + (i + 1) + "." + tasks[i]);
+            System.out.println("     " + (i + 1) + "." + tasks.get(i));
         }
         System.out.println("    ____________________________________________________________");
     }
 
     public static void markTask(Scanner scanner) {
         int taskNumber = scanner.nextInt();
-        tasks[taskNumber - 1].markAsDone();
+        tasks.get(taskNumber - 1).markAsDone();
         System.out.println("    ____________________________________________________________\n" +
                 "     Nice! I've marked this task as done:\n" +
-                "       [X] " + tasks[taskNumber - 1].getDescription() + "\n" +
+                "       [X] " + tasks.get(taskNumber - 1).getDescription() + "\n" +
                 "    ____________________________________________________________");
     }
 
     public static void unmarkTask(Scanner scanner) {
         int taskNumber = scanner.nextInt();
-        tasks[taskNumber - 1].markAsUndone();
+        tasks.get(taskNumber - 1).markAsUndone();
         System.out.println("    ____________________________________________________________\n" +
                 "     Nice! I've marked this task as undone:\n" +
-                "       [ ] " + tasks[taskNumber - 1].getDescription() + "\n" +
+                "       [ ] " + tasks.get(taskNumber - 1).getDescription() + "\n" +
                 "    ____________________________________________________________");
     }
 
@@ -58,10 +62,10 @@ public class Nana {
         if (taskName.equals("")) {
             throw new NanaException("The description of a todo cannot be empty.");
         }
-        tasks[taskCount] = new Todo(taskName);
+        tasks.add(taskCount,new Todo(taskName));
         taskCount++;
         System.out.println("    ____________________________________________________________\n" +
-                "     Got it. I've added this task:\n" + "       " + tasks[taskCount - 1].toString() + "\n" +
+                "     Got it. I've added this task:\n" + "       " + tasks.get(taskCount - 1) + "\n" +
                 "     Now you have " + taskCount + " tasks in the list.\n" +
                 "    ____________________________________________________________");
     }
@@ -76,10 +80,10 @@ public class Nana {
 
         scanner.useDelimiter("\\p{javaWhitespace}+");
 
-        tasks[taskCount] = new Deadline(taskName, by);
+        tasks.add(taskCount,new Deadline(taskName, by));
         taskCount++;
         System.out.println("    ____________________________________________________________\n" +
-                "     Got it. I've added this task:\n" + "       " + tasks[taskCount - 1] + "\n" +
+                "     Got it. I've added this task:\n" + "       " + tasks.get(taskCount - 1) + "\n" +
                 "     Now you have " + taskCount + " tasks in the list.\n" +
                 "    ____________________________________________________________");
     }
@@ -96,10 +100,22 @@ public class Nana {
         scanner.next();
         String endTime = scanner.nextLine();
         scanner.useDelimiter("\\p{javaWhitespace}+");
-        tasks[taskCount] = new Event(taskName, startTime, endTime);
+        tasks.add(taskCount,new Event(taskName, startTime, endTime));
         taskCount++;
         System.out.println("    ____________________________________________________________\n" +
-                "     Got it. I've added this task:\n" + "       " + tasks[taskCount - 1] + "\n" +
+                "     Got it. I've added this task:\n" + "       " + tasks.get(taskCount - 1) + "\n" +
+                "     Now you have " + taskCount + " tasks in the list.\n" +
+                "    ____________________________________________________________");
+    }
+
+    public static void deleteTask (Scanner scanner) {
+        int taskNumber = scanner.nextInt();
+        Task task = tasks.get(taskNumber - 1);
+        tasks.remove(taskNumber - 1);
+        taskCount--;
+        System.out.println("    ____________________________________________________________\n" +
+                "     Noted. I've removed this task:\n" +
+                "       " + task + "\n" +
                 "     Now you have " + taskCount + " tasks in the list.\n" +
                 "    ____________________________________________________________");
     }
@@ -107,7 +123,7 @@ public class Nana {
     public static void addTask(String input, Scanner scanner) throws NanaException {
         String taskName = input + scanner.nextLine();
 
-        tasks[taskCount] = new Task(taskName);
+        tasks.add(taskCount, new Task(taskName));
         taskCount++;
         System.out.println("    ____________________________________________________________\n" +
                 "     added: " + taskName + "\n" +
