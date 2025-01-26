@@ -7,7 +7,7 @@ public class Nana {
 
     public static void processInput (String input, Scanner scanner) throws NanaException {
         if (input.equals("blah")){
-            throw new NanaException("It seems nonsense");
+            throw new NanaException("It seems noMeaning");
         }
         if (input.equals("list")) {
             listTasks();
