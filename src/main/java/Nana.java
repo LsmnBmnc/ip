@@ -5,27 +5,27 @@ public class Nana {
     private static ArrayList<Task> tasks = new ArrayList<>();
     private static int taskCount = 0;
 
-    public static void processInput (String input, Scanner scanner) throws NanaException {
+    public static void processInput (String input, ArrayList<String> info) throws NanaException {
         if (input.equals("blah")){
             throw new NanaException("It seems nonsense");
         }
         if (input.equals("list")) {
             listTasks();
         } else if (input.equals("mark")) {
-            markTask(scanner);
+            markTask(info);
         } else if (input.equals("unmark")) {
-            unmarkTask(scanner);
+            unmarkTask(info);
         } else if (input.equals("todo")) {
-            addTodo(scanner);
+            addTodo(info);
         } else if (input.equals("deadline")) {
-            addDeadline(scanner);
+            addDeadline(info);
         } else if (input.equals("event")) {
-            addEvent(scanner);
+            addEvent(info);
         } else if (input.equals("delete")) {
-            deleteTask(scanner);
+            deleteTask(info);
         }
         else {
-            addTask(input, scanner);
+            addTask(input, info);
         }
     }
 
@@ -38,8 +38,11 @@ public class Nana {
         System.out.println("    ____________________________________________________________");
     }
 
-    public static void markTask(Scanner scanner) {
-        int taskNumber = scanner.nextInt();
+    public static void markTask(ArrayList<String> info) throws NanaException {
+        if (info.size() == 1) {
+            throw new NanaException("The marked task can't be empty.");
+        }
+        int taskNumber = Integer.parseInt(info.get(1));
         tasks.get(taskNumber - 1).markAsDone();
         System.out.println("    ____________________________________________________________\n" +
                 "     Nice! I've marked this task as done:\n" +
@@ -47,8 +50,11 @@ public class Nana {
                 "    ____________________________________________________________");
     }
 
-    public static void unmarkTask(Scanner scanner) {
-        int taskNumber = scanner.nextInt();
+    public static void unmarkTask(ArrayList<String> info) throws NanaException {
+        if (info.size() == 1) {
+            throw new NanaException("The unmarked task can't be empty.");
+        }
+        int taskNumber = Integer.parseInt(info.get(1));
         tasks.get(taskNumber - 1).markAsUndone();
         System.out.println("    ____________________________________________________________\n" +
                 "     Nice! I've marked this task as undone:\n" +
@@ -56,12 +62,18 @@ public class Nana {
                 "    ____________________________________________________________");
     }
 
-    public static void addTodo(Scanner scanner) throws NanaException {
+    public static void addTodo(ArrayList<String> info) throws NanaException {
 
-        String taskName = scanner.nextLine();
-        if (taskName.equals("")) {
+        if (info.size() == 1) {
             throw new NanaException("The description of a todo cannot be empty.");
         }
+
+        String taskName = "";
+        info.remove(0);
+        for (String element : info) {
+            taskName += element + " ";
+        }
+
         tasks.add(taskCount,new Todo(taskName));
         taskCount++;
         System.out.println("    ____________________________________________________________\n" +
@@ -70,15 +82,22 @@ public class Nana {
                 "    ____________________________________________________________");
     }
 
-    public static void addDeadline(Scanner scanner) throws NanaException {
-        scanner.useDelimiter(" /by");
-        String taskName = scanner.next();
+    public static void addDeadline(ArrayList<String> info) throws NanaException {
 
-        scanner.useDelimiter(" ");
-        scanner.next();
-        String by = scanner.nextLine();
+        if (info.size() == 1) {
+            throw new NanaException("The description of a deadline cannot be empty.");
+        }
 
-        scanner.useDelimiter("\\p{javaWhitespace}+");
+        String taskName = "";
+        info.remove(0);
+        for (String element : info) {
+            if (element.equals("/by")) {
+                break;
+            }
+            taskName += element + " ";
+        }
+
+        String by = info.get(info.size() - 1);
 
         tasks.add(taskCount,new Deadline(taskName, by));
         taskCount++;
@@ -88,18 +107,22 @@ public class Nana {
                 "    ____________________________________________________________");
     }
 
-    public static void addEvent(Scanner scanner) throws NanaException {
-        scanner.useDelimiter(" /from");
-        String taskName = scanner.next();
+    public static void addEvent(ArrayList<String> info) throws NanaException {
+        if (info.size() == 1) {
+            throw new NanaException("The description of an event cannot be empty.");
+        }
 
-        scanner.useDelimiter(" ");
-        scanner.next();
-        scanner.useDelimiter(" /to");
-        String startTime = scanner.next();
-        scanner.useDelimiter(" ");
-        scanner.next();
-        String endTime = scanner.nextLine();
-        scanner.useDelimiter("\\p{javaWhitespace}+");
+        String taskName = "";
+        info.remove(0);
+        for (String element : info) {
+            if (element.equals("/from")) {
+                break;
+            }
+            taskName += element + " ";
+        }
+        String startTime = info.get(info.size() - 4) + " " + info.get(info.size() - 3);
+        String endTime = info.get(info.size() - 1);
+
         tasks.add(taskCount,new Event(taskName, startTime, endTime));
         taskCount++;
         System.out.println("    ____________________________________________________________\n" +
@@ -108,8 +131,11 @@ public class Nana {
                 "    ____________________________________________________________");
     }
 
-    public static void deleteTask (Scanner scanner) {
-        int taskNumber = scanner.nextInt();
+    public static void deleteTask (ArrayList<String> info) throws NanaException {
+        if (info.size() == 1) {
+            throw new NanaException("The deleted task can't be empty.");
+        }
+        int taskNumber = Integer.parseInt(info.get(1));
         Task task = tasks.get(taskNumber - 1);
         tasks.remove(taskNumber - 1);
         taskCount--;
@@ -120,8 +146,16 @@ public class Nana {
                 "    ____________________________________________________________");
     }
 
-    public static void addTask(String input, Scanner scanner) throws NanaException {
-        String taskName = input + scanner.nextLine();
+    public static void addTask(String input, ArrayList<String> info) throws NanaException {
+        if (info.size() == 1) {
+            throw new NanaException("The description of a task cannot be empty.");
+        }
+
+        String taskName = "";
+        info.remove(0);
+        for (String element : info) {
+            taskName += element + " ";
+        }
 
         tasks.add(taskCount, new Task(taskName));
         taskCount++;
@@ -138,7 +172,14 @@ public class Nana {
                 "    ____________________________________________________________");
 
         while (true) {
-            String input = scanner.next();
+            ArrayList<String> inputArrayList = new ArrayList<>();
+            String input = scanner.nextLine().trim();
+            String[] inputList = input.split("\\s+");
+            for (String s: inputList) {
+                inputArrayList.add(s);
+            }
+            input = inputArrayList.get(0);
+
             if (input.equals("bye")) {
                 System.out.println("    ____________________________________________________________\n" +
                         "     Bye. Hope to see you again soon!\n" +
@@ -146,7 +187,7 @@ public class Nana {
                 break;
             } else {
                 try {
-                    processInput(input, scanner);
+                    processInput(input,inputArrayList);
                 } catch (NanaException e) {
                     System.out.println("    ____________________________________________________________\n" +
                             "     Exception: " + e.getMessage() + "\n" +
