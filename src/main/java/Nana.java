@@ -14,7 +14,7 @@ public class Nana {
 
     public static void processInput (String input, ArrayList<String> info) throws NanaException {
         if (input.equals("blah")){
-            throw new NanaException("It seems nonsense");
+            throw new NanaException("It seems no meaning");
         }
         if (input.equals("list")) {
             listTasks();
