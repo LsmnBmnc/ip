@@ -2,6 +2,10 @@ package nana;
 
 import java.io.IOException;
 
+/**
+ * The main class for the Nana application.
+ * It initializes the UI, storage, and task list, and handles the main program loop.
+ */
 public class Nana {
 
 
@@ -10,6 +14,11 @@ public class Nana {
     private TaskList tasks;
     private Ui ui;
 
+    /**
+     * Constructs a new Nana instance with the specified file path for storage.
+     *
+     * @param filePath the file path for storage
+     */
     public Nana(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -21,6 +30,10 @@ public class Nana {
         }
     }
 
+    /**
+     * Runs the Nana application.
+     * It prints the greeting message, reads user input, and processes commands until the user exits.
+     */
     public void run() {
         ui.printGreeting();
 
@@ -40,6 +53,11 @@ public class Nana {
         }
     }
 
+    /**
+     * The main method to start the Nana application.
+     *
+     * @param args command-line arguments
+     */
     public static void main(String[] args) {
         new Nana("./data/Nana.txt").run();
 
