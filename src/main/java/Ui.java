@@ -6,6 +6,7 @@ import java.io.IOException;
 public class Ui {
 
     private ArrayList<String> inputArrayList;
+    private String rawInput;
     private Scanner scanner;
     private String[] inputList;
 
@@ -108,11 +109,16 @@ public class Ui {
 
     public void readInput() {
         String input = this.scanner.nextLine().trim();
+        rawInput = input;
         inputArrayList.clear();
         inputList = input.split("\\s+");
         for (String s: inputList) {
             inputArrayList.add(s);
         }
+    }
+
+    public String getRawInput() {
+        return this.rawInput;
     }
 
     public String getSignal() {

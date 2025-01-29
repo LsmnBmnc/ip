@@ -14,8 +14,11 @@ public class TaskList {
         this.tasks = new ArrayList<>();
 
         for (ArrayList<String> task : tasks) {
+            boolean isDone = Boolean.parseBoolean(task.get(0));
+            task.remove(0);
+            task.remove(0);
             try{
-                this.process(task);
+                this.process(task, isDone);
             } catch (NanaException e) {
                 Ui.printNanaException(e);
             }
@@ -50,6 +53,22 @@ public class TaskList {
         }
     }
 
+    public void process (ArrayList<String> info, boolean isDone) throws NanaException {
+        String input = info.get(0);
+        System.out.println(input);
+
+        if (input.equals("todo")) {
+            addTodo(Parser.parseAddTodo(info), isDone);
+        } else if (input.equals("deadline")) {
+            addDeadline(Parser.parseAddDeadline(info), isDone);
+        } else if (input.equals("event")) {
+            addEvent(Parser.parseAddEvent(info), isDone);
+        } else {
+            addTask(Parser.parseAddTask(info),isDone);
+
+        }
+    }
+
     public void listTasks() {
         Ui.printListTasks(tasks, taskCount);
     }
@@ -57,13 +76,22 @@ public class TaskList {
     public static String listTxt() {
         String txt = "";
         for (int i = 0; i < taskCount; i++) {
-            txt += "     " + (i + 1) + "." + tasks.get(i) + "\n";
+            txt += "     " + tasks.get(i).toStorage() + "\n";
+            System.out.println(tasks.get(i));
         }
+
         return txt;
     }
 
     public void addTodo(ArrayList<String> parsed) {
         tasks.add(new Todo(parsed.get(0)));
+        addCount();
+        Ui.printAddTodo(tasks.get(taskCount - 1), taskCount);
+        Storage.updateTxt();
+    }
+
+    public void addTodo(ArrayList<String> parsed, boolean isDone) {
+        tasks.add(new Todo(parsed.get(0), isDone));
         addCount();
         Ui.printAddTodo(tasks.get(taskCount - 1), taskCount);
         Storage.updateTxt();
@@ -76,8 +104,22 @@ public class TaskList {
         Storage.updateTxt();
     }
 
+    public void addDeadline(ArrayList<String> parsed,boolean isDone) {
+        tasks.add(new Deadline(parsed.get(0), parsed.get(1),isDone));
+        addCount();
+        Ui.printAddDeadline(tasks.get(taskCount - 1), taskCount);
+        Storage.updateTxt();
+    }
+
     public void addEvent(ArrayList<String> parsed) {
         tasks.add(new Event(parsed.get(0), parsed.get(1), parsed.get(2)));
+        addCount();
+        Ui.printAddEvent(tasks.get(taskCount - 1), taskCount);
+        Storage.updateTxt();
+    }
+
+    public void addEvent(ArrayList<String> parsed, boolean isDone) {
+        tasks.add(new Event(parsed.get(0), parsed.get(1), parsed.get(2), isDone));
         addCount();
         Ui.printAddEvent(tasks.get(taskCount - 1), taskCount);
         Storage.updateTxt();
@@ -105,6 +147,13 @@ public class TaskList {
 
     public void addTask(ArrayList<String> parsed) {
         tasks.add(new Task(parsed.get(0)));
+        addCount();
+        Ui.printAddTask(tasks.get(taskCount - 1));
+        Storage.updateTxt();
+    }
+
+    public void addTask(ArrayList<String> parsed, boolean isDone) {
+        tasks.add(new Task(parsed.get(0),isDone));
         addCount();
         Ui.printAddTask(tasks.get(taskCount - 1));
         Storage.updateTxt();
