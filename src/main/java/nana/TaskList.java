@@ -29,7 +29,7 @@ public class TaskList {
         taskCount = tasks.size();
     }
 
-    public void process (ArrayList<String> info) throws NanaException {
+    public void process(ArrayList<String> info) throws NanaException {
         String input = info.get(0);
         if (info.get(0).equals("blah")){
             throw new NanaException("It seems no meaning");
@@ -48,6 +48,8 @@ public class TaskList {
             addEvent(Parser.parseAddEvent(info));
         } else if (input.equals("delete")) {
             deleteTask(Parser.parseDeleteTask(info));
+        } else if (input.equals("find")) {
+            findTask(Parser.parseFindTask(info));
         }
         else {
             addTask(Parser.parseAddTask(info));
@@ -55,7 +57,7 @@ public class TaskList {
         }
     }
 
-    public void process (ArrayList<String> info, boolean isDone) throws NanaException {
+    public void process(ArrayList<String> info, boolean isDone) throws NanaException {
         String input = info.get(0);
 
         if (input.equals("todo")) {
@@ -68,6 +70,16 @@ public class TaskList {
             addTask(Parser.parseAddTask(info),isDone);
 
         }
+    }
+
+    public void findTask(ArrayList<String> parsed) {
+        ArrayList<Task> matchTasks = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.getDescription().contains(parsed.get(0))) {
+                matchTasks.add(task);
+            }
+        }
+        Ui.printFindTasks(matchTasks);
     }
 
     public void listTasks() {
