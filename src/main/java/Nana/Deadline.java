@@ -1,7 +1,9 @@
+package Nana;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Deadline extends Task{
+public class Deadline extends Task {
 
     private LocalDate by;
     private String byString;

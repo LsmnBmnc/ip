@@ -1,6 +1,7 @@
+package Nana;
+
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.io.IOException;
 
 public class Ui {
@@ -17,7 +18,7 @@ public class Ui {
 
     public void printGreeting() {
         System.out.println("    ____________________________________________________________\n" +
-                "     Hello! I'm Nana\n" +
+                "     Hello! I'm Nana.Nana\n" +
                 "     What can I do for you?\n" +
                 "    ____________________________________________________________");
     }
