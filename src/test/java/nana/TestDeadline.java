@@ -1,4 +1,4 @@
-package Nana;
+package nana;
 
 import org.junit.jupiter.api.Test;
 

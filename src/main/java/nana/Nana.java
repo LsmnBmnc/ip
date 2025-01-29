@@ -1,13 +1,10 @@
-package Nana;
+package nana;
 
 import java.io.IOException;
 
 public class Nana {
 
-    /**
-     * private static ArrayList<Nana.Task> tasks = new ArrayList<>();
-    private static int taskCount = 0;
-     **/
+
 
     private Storage storage;
     private TaskList tasks;

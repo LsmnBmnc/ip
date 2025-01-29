@@ -1,4 +1,4 @@
-package Nana;
+package nana;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

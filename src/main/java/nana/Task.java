@@ -1,4 +1,4 @@
-package Nana;
+package nana;
 
 public class Task {
 

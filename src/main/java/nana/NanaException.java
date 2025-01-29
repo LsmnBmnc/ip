@@ -1,4 +1,4 @@
-package Nana;
+package nana;
 
 public class NanaException extends Exception {
     public NanaException(String message) {

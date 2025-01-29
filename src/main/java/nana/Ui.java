@@ -1,4 +1,4 @@
-package Nana;
+package nana;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class Ui {
 
     public void printGreeting() {
         System.out.println("    ____________________________________________________________\n" +
-                "     Hello! I'm Nana.Nana\n" +
+                "     Hello! I'm nana.Nana\n" +
                 "     What can I do for you?\n" +
                 "    ____________________________________________________________");
     }

@@ -1,4 +1,4 @@
-package Nana;
+package nana;
 
 import java.io.File;
 import java.io.FileWriter;
