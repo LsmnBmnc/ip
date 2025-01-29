@@ -106,5 +106,20 @@ public class Parser {
         return parsed;
     }
 
+    public static ArrayList<String> parseFindTask(ArrayList<String> info) throws NanaException {
+        if (info.size() == 1) {
+            throw new NanaException("The keyword to find cannot be empty.");
+        }
+
+        ArrayList<String> parsed = new ArrayList<>();
+        String keyword = "";
+        info.remove(0);
+        for (String element : info) {
+            keyword += element + " ";
+        }
+        parsed.add(keyword);
+        return parsed;
+    }
+
 }
 
