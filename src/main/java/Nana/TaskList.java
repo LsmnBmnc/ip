@@ -1,3 +1,5 @@
+package Nana;
+
 import java.util.ArrayList;
 public class TaskList {
 
@@ -55,7 +57,6 @@ public class TaskList {
 
     public void process (ArrayList<String> info, boolean isDone) throws NanaException {
         String input = info.get(0);
-        System.out.println(input);
 
         if (input.equals("todo")) {
             addTodo(Parser.parseAddTodo(info), isDone);
@@ -77,7 +78,6 @@ public class TaskList {
         String txt = "";
         for (int i = 0; i < taskCount; i++) {
             txt += "     " + tasks.get(i).toStorage() + "\n";
-            System.out.println(tasks.get(i));
         }
 
         return txt;

@@ -1,17 +1,11 @@
-import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.io.FileWriter;
+package Nana;
+
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.Files;
-import java.time.LocalDate;
 
 public class Nana {
 
     /**
-     * private static ArrayList<Task> tasks = new ArrayList<>();
+     * private static ArrayList<Nana.Task> tasks = new ArrayList<>();
     private static int taskCount = 0;
      **/
 
