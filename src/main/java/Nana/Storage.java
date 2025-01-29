@@ -48,7 +48,6 @@ public class Storage {
         }
     }
 
-
     public static void deleteTxt() {
         try {
             Path directory = Paths.get("./data/Nana.txt");
