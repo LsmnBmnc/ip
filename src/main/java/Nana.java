@@ -24,7 +24,7 @@ public class Nana {
         storage = new Storage(filePath);
         try {
             tasks = new TaskList(storage.load());
-        } catch (NanaException e) {
+        } catch (IOException e) {
             ui.showLoadingError();
             tasks = new TaskList();
         }
@@ -41,18 +41,16 @@ public class Nana {
                 break;
             } else {
                 try {
-                    Parser.processInput(ui.getSignal(), ui.getInfo());
+                    tasks.process(ui.getInfo());
                 } catch (NanaException e) {
-                    ui.printException(e);
+                    ui.printNanaException(e);
+                }
             }
+        }
     }
 
     public static void main(String[] args) {
         new Nana("./data/Nana.txt").run();
 
     }
-
-    }
 }
-}
-

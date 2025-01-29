@@ -1,16 +1,35 @@
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Storage {
 
-    public Storage(String filepath) {
+    private String filepath;
+    private static ArrayList<ArrayList<String>> tasks;
 
+    public Storage(String filepath) {
+        this.filepath = filepath;
+        tasks = new ArrayList<>();
     }
 
-    public static void load() {
+    public ArrayList<ArrayList<String>> load() throws IOException {
+        File f = new File(this.filepath);
+        Scanner scanner = new Scanner(f);
+        while (scanner.hasNext()) {
+            ArrayList<String> inputArrayList = new ArrayList<>();
+            String input = scanner.nextLine().trim();
+            String[] inputList = input.split("\\s+");
+            for (String s: inputList) {
+                inputArrayList.add(s);
+            }
+            tasks.add(inputArrayList);
+        }
+        return tasks;
 
     }
     public static void updateTxt() {
@@ -20,22 +39,13 @@ public class Storage {
                 throw new IOException("File not found");
             }
             FileWriter fw = new FileWriter("./data/Nana.txt");
-            fw.write(listTxt());
+            fw.write(TaskList.listTxt());
             fw.close();
         } catch (IOException e) {
-            System.out.println("    ____________________________________________________________\n" +
-                    "     Exception: " + e.getMessage() + "\n" +
-                    "    ____________________________________________________________");
+            Ui.printIoException(e);
         }
     }
 
-    public static String listTxt() {
-        String txt = "";
-        for (int i = 0; i < taskCount; i++) {
-            txt += "     " + (i + 1) + "." + tasks.get(i) + "\n";
-        }
-        return txt;
-    }
 
     public static void deleteTxt() {
         try {
