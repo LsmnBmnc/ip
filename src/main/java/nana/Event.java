@@ -4,7 +4,7 @@ package nana;
  * Represents an event task.
  * An event task is a task that starts and ends at specific times.
  */
-public class Event extends Task{
+public class Event extends Task {
 
     private String startTime;
     private String endTime;
@@ -16,7 +16,7 @@ public class Event extends Task{
      * @param startTime the start time of the event task
      * @param endTime the end time of the event task
      */
-    public Event (String description, String startTime, String endTime) {
+    public Event(String description, String startTime, String endTime) {
         super(description);
         this.startTime = startTime;
         this.endTime = endTime;
@@ -30,7 +30,7 @@ public class Event extends Task{
      * @param endTime the end time of the event task
      * @param isDone the completion status of the event task
      */
-    public Event (String description, String startTime, String endTime, boolean isDone) {
+    public Event(String description, String startTime, String endTime, boolean isDone) {
         super(description, isDone);
         this.startTime = startTime;
         this.endTime = endTime;
