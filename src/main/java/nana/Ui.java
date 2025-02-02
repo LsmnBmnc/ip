@@ -1,8 +1,9 @@
 package nana;
 
-import java.util.Scanner;
-import java.util.ArrayList;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 
 /**
  * The Ui class handles all interactions with the user.
@@ -28,9 +29,12 @@ public class Ui {
      * Prints the greeting message to the user.
      */
     public void printGreeting() {
-        System.out.println("    ____________________________________________________________\n" +
-                "     Hello! I'm nana.Nana\n" +
-                "     What can I do for you?\n" +
+        System.out.println("    ____________________________________________________________\n"
+                +
+                "     Hello! I'm nana.Nana\n"
+                +
+                "     What can I do for you?\n"
+                +
                 "    ____________________________________________________________");
     }
 
@@ -38,8 +42,10 @@ public class Ui {
      * Prints the goodbye message to the user.
      */
     public void printBye() {
-        System.out.println("    ____________________________________________________________\n" +
-                "     Bye. Hope to see you again soon!\n" +
+        System.out.println("    ____________________________________________________________\n"
+                +
+                "     Bye. Hope to see you again soon!\n"
+                +
                 "    ____________________________________________________________");
     }
 
@@ -49,8 +55,10 @@ public class Ui {
      * @param e the NanaException to be printed
      */
     public static void printNanaException(NanaException e) {
-        System.out.println("    ____________________________________________________________\n" +
-                "     Exception: " + e.getMessage() + "\n" +
+        System.out.println("    ____________________________________________________________\n"
+                +
+                "     Exception: " + e.getMessage() + "\n"
+                +
                 "    ____________________________________________________________");
 
     }
@@ -60,8 +68,10 @@ public class Ui {
      * @param e the IOException to be printed
      */
     public static void printIoException(IOException e) {
-        System.out.println("    ____________________________________________________________\n" +
-                "     Exception: " + e.getMessage() + "\n" +
+        System.out.println("    ____________________________________________________________\n"
+                +
+                "     Exception: " + e.getMessage() + "\n"
+                +
                 "    ____________________________________________________________");
     }
 
@@ -69,8 +79,10 @@ public class Ui {
      * Shows a loading error message to the user.
      */
     public void showLoadingError() {
-        System.out.println("    ____________________________________________________________\n" +
-                "     Exception: File not found\n" +
+        System.out.println("    ____________________________________________________________\n"
+                +
+                "     Exception: File not found\n"
+                +
                 "    ____________________________________________________________");
     }
 
@@ -80,9 +92,12 @@ public class Ui {
      * @param task the task that has been marked as done
      */
     public static void printMarkTask(Task task) {
-        System.out.println("    ____________________________________________________________\n" +
-                "     Nice! I've marked this task as done:\n" +
-                "       [X] " + task.getDescription() + "\n" +
+        System.out.println("    ____________________________________________________________\n"
+                +
+                "     Nice! I've marked this task as done:\n"
+                +
+                "       [X] " + task.getDescription() + "\n"
+                +
                 "    ____________________________________________________________");
     }
 
@@ -92,9 +107,12 @@ public class Ui {
      * @param task the task that has been marked as undone
      */
     public static void printUnmarkTask(Task task) {
-        System.out.println("    ____________________________________________________________\n" +
-                "     Nice! I've marked this task as undone:\n" +
-                "       [ ] " + task.getDescription() + "\n" +
+        System.out.println("    ____________________________________________________________\n"
+                +
+                "     Nice! I've marked this task as undone:\n"
+                +
+                "       [ ] " + task.getDescription() + "\n"
+                +
                 "    ____________________________________________________________");
     }
 
@@ -105,10 +123,14 @@ public class Ui {
      * @param taskCount the current number of tasks in the list
      */
     public static void printAddTodo(Task task, int taskCount) {
-        System.out.println("    ____________________________________________________________\n" +
-                "     Got it. I've added this task:\n" +
-                "       " + task + "\n" +
-                "     Now you have " + taskCount + " tasks in the list.\n" +
+        System.out.println("    ____________________________________________________________\n"
+                +
+                "     Got it. I've added this task:\n"
+                +
+                "       " + task + "\n"
+                +
+                "     Now you have " + taskCount + " tasks in the list.\n"
+                +
                 "    ____________________________________________________________");
     }
 
@@ -119,10 +141,14 @@ public class Ui {
      * @param taskCount the current number of tasks in the list
      */
     public static void printAddDeadline(Task task, int taskCount) {
-        System.out.println("    ____________________________________________________________\n" +
-                "     Got it. I've added this task:\n" +
-                "       " + task + "\n" +
-                "     Now you have " + taskCount + " tasks in the list.\n" +
+        System.out.println("    ____________________________________________________________\n"
+                +
+                "     Got it. I've added this task:\n"
+                +
+                "       " + task + "\n"
+                +
+                "     Now you have " + taskCount + " tasks in the list.\n"
+                +
                 "    ____________________________________________________________");
     }
 
@@ -133,9 +159,12 @@ public class Ui {
      * @param taskCount the current number of tasks in the list
      */
     public static void printAddEvent(Task task, int taskCount) {
-        System.out.println("    ____________________________________________________________\n" +
-                "     Got it. I've added this task:\n" + "       " + task + "\n" +
-                "     Now you have " + taskCount + " tasks in the list.\n" +
+        System.out.println("    ____________________________________________________________\n"
+                +
+                "     Got it. I've added this task:\n" + "       " + task + "\n"
+                +
+                "     Now you have " + taskCount + " tasks in the list.\n"
+                +
                 "    ____________________________________________________________");
     }
 
@@ -146,10 +175,14 @@ public class Ui {
      * @param taskCount the current number of tasks in the list
      */
     public static void printDeleteTask(Task task, int taskCount) {
-        System.out.println("    ____________________________________________________________\n" +
-                "     Noted. I've removed this task:\n" +
-                "       " + task + "\n" +
-                "     Now you have " + taskCount + " tasks in the list.\n" +
+        System.out.println("    ____________________________________________________________\n"
+                +
+                "     Noted. I've removed this task:\n"
+                +
+                "       " + task + "\n"
+                +
+                "     Now you have " + taskCount + " tasks in the list.\n"
+                +
                 "    ____________________________________________________________");
     }
 
@@ -159,8 +192,10 @@ public class Ui {
      * @param task the task that has been added
      */
     public static void printAddTask(Task task) {
-        System.out.println("    ____________________________________________________________\n" +
-                "     added: " + task.getDescription() + "\n" +
+        System.out.println("    ____________________________________________________________\n"
+                +
+                "     added: " + task.getDescription() + "\n"
+                +
                 "    ____________________________________________________________");
     }
 

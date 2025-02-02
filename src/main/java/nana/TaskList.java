@@ -7,7 +7,7 @@ public class TaskList {
     private static ArrayList<Task> tasks;
     private static int taskCount;
 
-    public TaskList(){
+    public TaskList() {
         tasks = new ArrayList<>();
         taskCount = 0;
     }
@@ -19,7 +19,7 @@ public class TaskList {
             boolean isDone = Boolean.parseBoolean(task.get(0));
             task.remove(0);
             task.remove(0);
-            try{
+            try {
                 this.process(task, isDone);
             } catch (NanaException e) {
                 Ui.printNanaException(e);
@@ -31,7 +31,7 @@ public class TaskList {
 
     public void process(ArrayList<String> info) throws NanaException {
         String input = info.get(0);
-        if (info.get(0).equals("blah")){
+        if (info.get(0).equals("blah")) {
             throw new NanaException("It seems no meaning");
         }
         if (input.equals("list")) {
@@ -67,7 +67,7 @@ public class TaskList {
         } else if (input.equals("event")) {
             addEvent(Parser.parseAddEvent(info), isDone);
         } else {
-            addTask(Parser.parseAddTask(info),isDone);
+            addTask(Parser.parseAddTask(info), isDone);
 
         }
     }
@@ -116,7 +116,7 @@ public class TaskList {
         Storage.updateTxt();
     }
 
-    public void addDeadline(ArrayList<String> parsed,boolean isDone) {
+    public void addDeadline(ArrayList<String> parsed, boolean isDone) {
         tasks.add(new Deadline(parsed.get(0), parsed.get(1),isDone));
         addCount();
         Ui.printAddDeadline(tasks.get(taskCount - 1), taskCount);
@@ -165,7 +165,7 @@ public class TaskList {
     }
 
     public void addTask(ArrayList<String> parsed, boolean isDone) {
-        tasks.add(new Task(parsed.get(0),isDone));
+        tasks.add(new Task(parsed.get(0), isDone));
         addCount();
         Ui.printAddTask(tasks.get(taskCount - 1));
         Storage.updateTxt();
