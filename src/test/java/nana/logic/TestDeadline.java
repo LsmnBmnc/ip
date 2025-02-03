@@ -1,5 +1,6 @@
-package nana;
+package nana.logic;
 
+import nana.logic.Deadline;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

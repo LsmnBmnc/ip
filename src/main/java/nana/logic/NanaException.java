@@ -1,4 +1,4 @@
-package nana;
+package nana.logic;
 
 /**
  * Represents an exception specific to the Nana application.

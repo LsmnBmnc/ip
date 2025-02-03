@@ -1,4 +1,4 @@
-package nana;
+package nana.logic;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,25 +28,29 @@ public class Ui {
     /**
      * Prints the greeting message to the user.
      */
-    public void printGreeting() {
-        System.out.println("    ____________________________________________________________\n"
+    public String printGreeting() {
+        String s = "    ____________________________________________________________\n"
                 +
-                "     Hello! I'm nana.Nana\n"
+                "     Hello! I'm nana.logic.Nana\n"
                 +
                 "     What can I do for you?\n"
                 +
-                "    ____________________________________________________________");
+                "    ____________________________________________________________";
+        System.out.println(s);
+        return s;
     }
 
     /**
      * Prints the goodbye message to the user.
      */
-    public void printBye() {
-        System.out.println("    ____________________________________________________________\n"
+    public String printBye() {
+        String s = "    ____________________________________________________________\n"
                 +
                 "     Bye. Hope to see you again soon!\n"
                 +
-                "    ____________________________________________________________");
+                "    ____________________________________________________________";
+        System.out.println();
+        return s;
     }
 
     /**
@@ -54,36 +58,42 @@ public class Ui {
      *
      * @param e the NanaException to be printed
      */
-    public static void printNanaException(NanaException e) {
-        System.out.println("    ____________________________________________________________\n"
+    public static String printNanaException(NanaException e) {
+        String s = "    ____________________________________________________________\n"
                 +
                 "     Exception: " + e.getMessage() + "\n"
                 +
-                "    ____________________________________________________________");
-
+                "    ____________________________________________________________";
+        System.out.println(s);
+        return s;
     }
+
     /**
      * Prints the specified IOException message to the user.
      *
      * @param e the IOException to be printed
      */
-    public static void printIoException(IOException e) {
-        System.out.println("    ____________________________________________________________\n"
+    public static String printIoException(IOException e) {
+        String s = "    ____________________________________________________________\n"
                 +
                 "     Exception: " + e.getMessage() + "\n"
                 +
-                "    ____________________________________________________________");
+                "    ____________________________________________________________";
+        System.out.println(s);
+        return s;
     }
 
     /**
      * Shows a loading error message to the user.
      */
-    public void showLoadingError() {
-        System.out.println("    ____________________________________________________________\n"
+    public String showLoadingError() {
+        String s = "    ____________________________________________________________\n"
                 +
                 "     Exception: File not found\n"
                 +
-                "    ____________________________________________________________");
+                "    ____________________________________________________________";
+        System.out.println(s);
+        return s;
     }
 
     /**
@@ -91,14 +101,16 @@ public class Ui {
      *
      * @param task the task that has been marked as done
      */
-    public static void printMarkTask(Task task) {
-        System.out.println("    ____________________________________________________________\n"
+    public static String printMarkTask(Task task) {
+        String s = "    ____________________________________________________________\n"
                 +
                 "     Nice! I've marked this task as done:\n"
                 +
                 "       [X] " + task.getDescription() + "\n"
                 +
-                "    ____________________________________________________________");
+                "    ____________________________________________________________";
+        System.out.println(s);
+        return s;
     }
 
     /**
@@ -106,14 +118,16 @@ public class Ui {
      *
      * @param task the task that has been marked as undone
      */
-    public static void printUnmarkTask(Task task) {
-        System.out.println("    ____________________________________________________________\n"
+    public static String printUnmarkTask(Task task) {
+        String s = "    ____________________________________________________________\n"
                 +
                 "     Nice! I've marked this task as undone:\n"
                 +
                 "       [ ] " + task.getDescription() + "\n"
                 +
-                "    ____________________________________________________________");
+                "    ____________________________________________________________";
+        System.out.println(s);
+        return s;
     }
 
     /**
@@ -122,8 +136,8 @@ public class Ui {
      * @param task the task that has been added
      * @param taskCount the current number of tasks in the list
      */
-    public static void printAddTodo(Task task, int taskCount) {
-        System.out.println("    ____________________________________________________________\n"
+    public static String printAddTodo(Task task, int taskCount) {
+        String s = "    ____________________________________________________________\n"
                 +
                 "     Got it. I've added this task:\n"
                 +
@@ -131,7 +145,9 @@ public class Ui {
                 +
                 "     Now you have " + taskCount + " tasks in the list.\n"
                 +
-                "    ____________________________________________________________");
+                "    ____________________________________________________________";
+        System.out.println(s);
+        return s;
     }
 
     /**
@@ -140,8 +156,8 @@ public class Ui {
      * @param task the task that has been added
      * @param taskCount the current number of tasks in the list
      */
-    public static void printAddDeadline(Task task, int taskCount) {
-        System.out.println("    ____________________________________________________________\n"
+    public static String printAddDeadline(Task task, int taskCount) {
+        String s = "    ____________________________________________________________\n"
                 +
                 "     Got it. I've added this task:\n"
                 +
@@ -149,7 +165,9 @@ public class Ui {
                 +
                 "     Now you have " + taskCount + " tasks in the list.\n"
                 +
-                "    ____________________________________________________________");
+                "    ____________________________________________________________";
+        System.out.println(s);
+        return s;
     }
 
     /**
@@ -158,14 +176,18 @@ public class Ui {
      * @param task the task that has been added
      * @param taskCount the current number of tasks in the list
      */
-    public static void printAddEvent(Task task, int taskCount) {
-        System.out.println("    ____________________________________________________________\n"
+    public static String printAddEvent(Task task, int taskCount) {
+        String s = "    ____________________________________________________________\n"
                 +
-                "     Got it. I've added this task:\n" + "       " + task + "\n"
+                "     Got it. I've added this task:\n"
+                +
+                "       " + task + "\n"
                 +
                 "     Now you have " + taskCount + " tasks in the list.\n"
                 +
-                "    ____________________________________________________________");
+                "    ____________________________________________________________";
+        System.out.println(s);
+        return s;
     }
 
     /**
@@ -174,8 +196,8 @@ public class Ui {
      * @param task the task that has been deleted
      * @param taskCount the current number of tasks in the list
      */
-    public static void printDeleteTask(Task task, int taskCount) {
-        System.out.println("    ____________________________________________________________\n"
+    public static String printDeleteTask(Task task, int taskCount) {
+        String s = "    ____________________________________________________________\n"
                 +
                 "     Noted. I've removed this task:\n"
                 +
@@ -183,7 +205,9 @@ public class Ui {
                 +
                 "     Now you have " + taskCount + " tasks in the list.\n"
                 +
-                "    ____________________________________________________________");
+                "    ____________________________________________________________";
+        System.out.println(s);
+        return s;
     }
 
     /**
@@ -191,12 +215,14 @@ public class Ui {
      *
      * @param task the task that has been added
      */
-    public static void printAddTask(Task task) {
-        System.out.println("    ____________________________________________________________\n"
+    public static String printAddTask(Task task) {
+        String s = "    ____________________________________________________________\n"
                 +
                 "     added: " + task.getDescription() + "\n"
                 +
-                "    ____________________________________________________________");
+                "    ____________________________________________________________";
+        System.out.println(s);
+        return s;
     }
 
     /**
@@ -205,22 +231,29 @@ public class Ui {
      * @param tasks the list of tasks
      * @param taskCount the current number of tasks in the list
      */
-    public static void printListTasks(ArrayList<Task> tasks, int taskCount) {
-        System.out.println("    ____________________________________________________________");
-        System.out.println("     Here are the tasks in your list:");
+    public static String printListTasks(ArrayList<Task> tasks, int taskCount) {
+        String s = "    ____________________________________________________________\n"
+                +
+                "     Here are the tasks in your list:\n";
+
         for (int i = 0; i < taskCount; i++) {
-            System.out.println("     " + (i + 1) + "." + tasks.get(i));
+            s += "     " + (i + 1) + "." + tasks.get(i) + "\n";
         }
-        System.out.println("    ____________________________________________________________");
+        s += "    ____________________________________________________________";
+        System.out.println(s);
+        return s;
     }
 
-    public static void printFindTasks(ArrayList<Task> tasks) {
-        System.out.println("    ____________________________________________________________");
-        System.out.println("     Here are the matching tasks in your list:");
+    public static String printFindTasks(ArrayList<Task> tasks) {
+        String s = "    ____________________________________________________________\n"
+                +
+                "     Here are the matching tasks in your list:\n";
         for (int i = 0; i < tasks.size(); i++) {
-            System.out.println("     " + (i + 1) + "." + tasks.get(i));
+            s += "     " + (i + 1) + "." + tasks.get(i) + "\n";
         }
-        System.out.println("    ____________________________________________________________");
+        s += "    ____________________________________________________________";
+        System.out.println(s);
+        return s;
     }
 
     /**
@@ -228,6 +261,15 @@ public class Ui {
      */
     public void readInput() {
         String input = this.scanner.nextLine().trim();
+        rawInput = input;
+        inputArrayList.clear();
+        inputList = input.split("\\s+");
+        for (String s: inputList) {
+            inputArrayList.add(s);
+        }
+    }
+
+    public void readInput(String input) {
         rawInput = input;
         inputArrayList.clear();
         inputList = input.split("\\s+");

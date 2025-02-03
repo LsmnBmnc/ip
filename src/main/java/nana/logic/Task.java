@@ -1,4 +1,4 @@
-package nana;
+package nana.logic;
 
 /**
  * Represents a task with a description and completion status.

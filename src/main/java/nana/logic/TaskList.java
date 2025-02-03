@@ -1,4 +1,4 @@
-package nana;
+package nana.logic;
 
 import java.util.ArrayList;
 public class TaskList {
@@ -29,61 +29,64 @@ public class TaskList {
         taskCount = tasks.size();
     }
 
-    public void process(ArrayList<String> info) throws NanaException {
+    public String process(ArrayList<String> info) throws NanaException {
         String input = info.get(0);
+        String s = "";
         if (info.get(0).equals("blah")) {
             throw new NanaException("It seems no meaning");
         }
         if (input.equals("list")) {
-            listTasks();
+            s = listTasks();
         } else if (input.equals("mark")) {
-            markTask(Parser.parseMarkTask(info));
+            s = markTask(Parser.parseMarkTask(info));
         } else if (input.equals("unmark")) {
-            unmarkTask(Parser.parseUnmarkTask(info));
+            s = unmarkTask(Parser.parseUnmarkTask(info));
         } else if (input.equals("todo")) {
-            addTodo(Parser.parseAddTodo(info));
+            s = addTodo(Parser.parseAddTodo(info));
         } else if (input.equals("deadline")) {
-            addDeadline(Parser.parseAddDeadline(info));
+            s = addDeadline(Parser.parseAddDeadline(info));
         } else if (input.equals("event")) {
-            addEvent(Parser.parseAddEvent(info));
+            s = addEvent(Parser.parseAddEvent(info));
         } else if (input.equals("delete")) {
-            deleteTask(Parser.parseDeleteTask(info));
+            s = deleteTask(Parser.parseDeleteTask(info));
         } else if (input.equals("find")) {
-            findTask(Parser.parseFindTask(info));
+            s = findTask(Parser.parseFindTask(info));
         }
         else {
-            addTask(Parser.parseAddTask(info));
-
+            s = addTask(Parser.parseAddTask(info));
         }
+        return s;
     }
 
-    public void process(ArrayList<String> info, boolean isDone) throws NanaException {
+    public String process(ArrayList<String> info, boolean isDone) throws NanaException {
         String input = info.get(0);
 
+        String s = "";
         if (input.equals("todo")) {
-            addTodo(Parser.parseAddTodo(info), isDone);
+            s = addTodo(Parser.parseAddTodo(info), isDone);
         } else if (input.equals("deadline")) {
-            addDeadline(Parser.parseAddDeadline(info), isDone);
+            s = addDeadline(Parser.parseAddDeadline(info), isDone);
         } else if (input.equals("event")) {
-            addEvent(Parser.parseAddEvent(info), isDone);
+            s = addEvent(Parser.parseAddEvent(info), isDone);
         } else {
-            addTask(Parser.parseAddTask(info), isDone);
+            s = addTask(Parser.parseAddTask(info), isDone);
 
         }
+        return s;
     }
 
-    public void findTask(ArrayList<String> parsed) {
+    public String findTask(ArrayList<String> parsed) {
         ArrayList<Task> matchTasks = new ArrayList<>();
         for (Task task : tasks) {
             if (task.getDescription().contains(parsed.get(0))) {
                 matchTasks.add(task);
             }
         }
-        Ui.printFindTasks(matchTasks);
+        return Ui.printFindTasks(matchTasks);
     }
 
-    public void listTasks() {
-        Ui.printListTasks(tasks, taskCount);
+    public String listTasks() {
+        return Ui.printListTasks(tasks, taskCount);
     }
 
     public static String listTxt() {
@@ -95,80 +98,91 @@ public class TaskList {
         return txt;
     }
 
-    public void addTodo(ArrayList<String> parsed) {
+    public String addTodo(ArrayList<String> parsed) {
         tasks.add(new Todo(parsed.get(0)));
         addCount();
-        Ui.printAddTodo(tasks.get(taskCount - 1), taskCount);
+        String s = Ui.printAddTodo(tasks.get(taskCount - 1), taskCount);
         Storage.updateTxt();
+        return s;
     }
 
-    public void addTodo(ArrayList<String> parsed, boolean isDone) {
+    public String addTodo(ArrayList<String> parsed, boolean isDone) {
         tasks.add(new Todo(parsed.get(0), isDone));
         addCount();
-        Ui.printAddTodo(tasks.get(taskCount - 1), taskCount);
+        String s = Ui.printAddTodo(tasks.get(taskCount - 1), taskCount);
         Storage.updateTxt();
+        return s;
     }
 
-    public void addDeadline(ArrayList<String> parsed) {
+    public String addDeadline(ArrayList<String> parsed) {
         tasks.add(new Deadline(parsed.get(0), parsed.get(1)));
         addCount();
-        Ui.printAddDeadline(tasks.get(taskCount - 1), taskCount);
+        String s = Ui.printAddDeadline(tasks.get(taskCount - 1), taskCount);
         Storage.updateTxt();
+        return s;
     }
 
-    public void addDeadline(ArrayList<String> parsed, boolean isDone) {
-        tasks.add(new Deadline(parsed.get(0), parsed.get(1),isDone));
+    public String addDeadline(ArrayList<String> parsed, boolean isDone) {
+        tasks.add(new Deadline(parsed.get(0), parsed.get(1), isDone));
         addCount();
-        Ui.printAddDeadline(tasks.get(taskCount - 1), taskCount);
+        String s = Ui.printAddDeadline(tasks.get(taskCount - 1), taskCount);
         Storage.updateTxt();
+        return s;
     }
 
-    public void addEvent(ArrayList<String> parsed) {
+    public String addEvent(ArrayList<String> parsed) {
         tasks.add(new Event(parsed.get(0), parsed.get(1), parsed.get(2)));
         addCount();
-        Ui.printAddEvent(tasks.get(taskCount - 1), taskCount);
+        String s = Ui.printAddEvent(tasks.get(taskCount - 1), taskCount);
         Storage.updateTxt();
+        return s;
     }
 
-    public void addEvent(ArrayList<String> parsed, boolean isDone) {
+    public String addEvent(ArrayList<String> parsed, boolean isDone) {
         tasks.add(new Event(parsed.get(0), parsed.get(1), parsed.get(2), isDone));
         addCount();
-        Ui.printAddEvent(tasks.get(taskCount - 1), taskCount);
+        String s = Ui.printAddEvent(tasks.get(taskCount - 1), taskCount);
         Storage.updateTxt();
+        return s;
     }
 
-    public void deleteTask(int index) {
+    public String deleteTask(int index) {
         Task task = tasks.get(index - 1);
         tasks.remove(index - 1);
         minsCount();
-        Ui.printDeleteTask(task, taskCount);
+        String s = Ui.printDeleteTask(task, taskCount);
         Storage.updateTxt();
+        return s;
     }
 
-    public void markTask(int index) {
+    public String markTask(int index) {
         tasks.get(index - 1).markAsDone();
-        Ui.printMarkTask(tasks.get(index - 1));
+        String s = Ui.printMarkTask(tasks.get(index - 1));
         Storage.updateTxt();
+        return s;
     }
 
-    public void unmarkTask(int index) {
+    public String unmarkTask(int index) {
         tasks.get(index - 1).markAsUndone();
-        Ui.printUnmarkTask(tasks.get(index - 1));
+        String s = Ui.printUnmarkTask(tasks.get(index - 1));
         Storage.updateTxt();
+        return s;
     }
 
-    public void addTask(ArrayList<String> parsed) {
+    public String addTask(ArrayList<String> parsed) {
         tasks.add(new Task(parsed.get(0)));
         addCount();
-        Ui.printAddTask(tasks.get(taskCount - 1));
+        String s = Ui.printAddTask(tasks.get(taskCount - 1));
         Storage.updateTxt();
+        return s;
     }
 
-    public void addTask(ArrayList<String> parsed, boolean isDone) {
+    public String addTask(ArrayList<String> parsed, boolean isDone) {
         tasks.add(new Task(parsed.get(0), isDone));
         addCount();
-        Ui.printAddTask(tasks.get(taskCount - 1));
+        String s = Ui.printAddTask(tasks.get(taskCount - 1));
         Storage.updateTxt();
+        return s;
     }
 
     private void addCount() {
