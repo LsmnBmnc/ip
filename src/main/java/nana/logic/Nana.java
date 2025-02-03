@@ -1,4 +1,4 @@
-package nana;
+package nana.logic;
 
 import java.io.IOException;
 
@@ -51,6 +51,17 @@ public class Nana {
                 }
             }
         }
+    }
+
+    public String getResponse(String input) {
+        ui.readInput(input);
+        String s = "";
+        try {
+            s = tasks.process(ui.getInfo());
+        } catch (NanaException e) {
+            return e.getMessage();
+        }
+        return s;
     }
 
     /**

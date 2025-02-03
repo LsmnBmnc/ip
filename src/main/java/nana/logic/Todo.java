@@ -1,4 +1,4 @@
-package nana;
+package nana.logic;
 
 /**
  * Represents a todo task.

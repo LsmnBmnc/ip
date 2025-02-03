@@ -1,4 +1,4 @@
-package nana;
+package nana.logic;
 
 import java.util.ArrayList;
 public class Parser {
