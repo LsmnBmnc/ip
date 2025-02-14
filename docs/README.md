@@ -1,30 +1,54 @@
-# Duke User Guide
+# Nana User Guide
 
-// Update the title above to match the actual product name
+![UI Example](ui.png)
 
-// Product screenshot goes here
+**Welcome to Nana, your personal task management chatbot.**
 
-// Product intro goes here
+Nana manages your tasks with priority efficiently by organizing them into three categories: Todos, Deadlines, and Events.
 
 ## Adding deadlines
 
-// Describe the action and its outcome.
+Add a deadline by providing the task description and the due date.
 
-// Give examples of usage
+Example: `deadline Assignment 1 /by 2025-02-19`
 
-Example: `keyword (optional arguments)`
-
-// A description of the expected outcome goes here
+Expected output:
 
 ```
-expected output
+    ____________________________________________________________
+     Got it. I've added this task:
+       [D][ ]Assignment 1  (by:Feb 19 2025)
+     Now you have 4 tasks in the list.
+    ____________________________________________________________
 ```
 
-## Feature ABC
+## Searching for Tasks
 
-// Feature details
+Search for tasks by providing a keyword.
 
+Example: `find study`
 
-## Feature XYZ
+Expected output if task is found:
 
-// Feature details
+```
+    ____________________________________________________________
+     Here are the matching tasks in your list:
+     1.[E][ ]study  (from: /from Monday to:Tuesday)
+    ____________________________________________________________
+```
+
+## Deleting Tasks
+
+Delete a task by providing the task index in the list.
+
+Example: `delete 2`
+
+Expected output if task is found:
+
+```
+    ____________________________________________________________
+     Noted. I've removed this task:
+       [E][ ]study  (from: /from Monday to:Tuesday)
+     Now you have 3 tasks in the list.
+    ____________________________________________________________
+```
