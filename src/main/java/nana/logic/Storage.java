@@ -23,6 +23,7 @@ public class Storage {
      * @param filepath the path of the file to store tasks
      */
     public Storage(String filepath) {
+        assert filepath != null : "Filepath should not be null";
         this.filepath = filepath;
         tasks = new ArrayList<>();
     }
