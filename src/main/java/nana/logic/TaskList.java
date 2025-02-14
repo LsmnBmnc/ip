@@ -12,10 +12,10 @@ public class TaskList {
         taskCount = 0;
     }
 
-    public TaskList(ArrayList<ArrayList<String>> tasks) {
+    public TaskList(ArrayList<ArrayList<String>> input_tasks) {
         this.tasks = new ArrayList<>();
 
-        for (ArrayList<String> task : tasks) {
+        for (ArrayList<String> task : input_tasks) {
             boolean isDone = Boolean.parseBoolean(task.get(0));
             task.remove(0);
             task.remove(0);
