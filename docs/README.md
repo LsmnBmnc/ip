@@ -1,6 +1,6 @@
 # Nana User Guide
 
-![UI Example](ui.png)
+![UI Example](Ui.png)
 
 **Welcome to Nana, your personal task management chatbot.**
 
