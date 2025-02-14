@@ -66,7 +66,7 @@ public class TaskList {
             s = findTask(Parser.parseFindTask(info));
         }
         else {
-            s = addTask(Parser.parseAddTask(info));
+            throw new NanaException("You need to specific the type of task");
         }
         return s;
     }
@@ -83,15 +83,13 @@ public class TaskList {
         String input = info.get(0);
 
         String s = "";
+
         if (input.equals("todo")) {
             s = addTodo(Parser.parseAddTodo(info), isDone);
         } else if (input.equals("deadline")) {
             s = addDeadline(Parser.parseAddDeadline(info), isDone);
         } else if (input.equals("event")) {
             s = addEvent(Parser.parseAddEvent(info), isDone);
-        } else {
-            s = addTask(Parser.parseAddTask(info), isDone);
-
         }
         return s;
     }
