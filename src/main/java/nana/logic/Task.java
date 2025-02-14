@@ -8,6 +8,7 @@ public class Task {
     protected String description;
     protected boolean isDone;
 
+    protected Priority priority;
     /**
      * Constructs a new Task instance with the specified description.
      * The task is initially marked as not done.
@@ -17,6 +18,7 @@ public class Task {
     public Task(String description) {
         this.description = description;
         this.isDone = false;
+        priority = Priority.LOW;
     }
 
     /**
@@ -28,6 +30,7 @@ public class Task {
     public Task(String description, boolean isDone) {
         this.description = description;
         this.isDone = isDone;
+        priority = Priority.LOW;
     }
 
     /**
@@ -84,4 +87,13 @@ public class Task {
     public void markAsUndone() {
         this.isDone = false;
     }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+    
 }

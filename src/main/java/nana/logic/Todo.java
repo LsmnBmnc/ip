@@ -13,6 +13,7 @@ public class Todo extends Task {
      */
     public Todo(String description) {
         super(description);
+        priority = Priority.LOWER_QUARTILE;
     }
 
     /**
@@ -23,6 +24,7 @@ public class Todo extends Task {
      */
     public Todo(String description, boolean isDone) {
         super(description, isDone);
+        priority = Priority.LOWER_QUARTILE;
     }
 
     /**
