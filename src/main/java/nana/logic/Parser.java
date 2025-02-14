@@ -122,7 +122,13 @@ public class Parser {
         return parsed;
     }
 
-    
+    /**
+     * Parses the delete task command.
+     *
+     * @param info the list of strings containing the command and arguments
+     * @return the index of the task to be deleted
+     * @throws NanaException if the task index is not provided
+     */
     public static int parseDeleteTask(ArrayList<String> info) throws NanaException {
         if (info.size() == 1) {
             throw new NanaException("The deleted task can't be empty.");
