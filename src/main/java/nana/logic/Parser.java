@@ -138,28 +138,6 @@ public class Parser {
     }
 
     /**
-     * Parses the add task command.
-     *
-     * @param info the list of strings containing the command and arguments
-     * @return a list of strings containing the parsed task description
-     * @throws NanaException if the task description is not provided
-     */
-    public static ArrayList<String> parseAddTask(ArrayList<String> info) throws NanaException {
-        if (info.size() == 1) {
-            throw new NanaException("The description of a task cannot be empty.");
-        }
-
-        ArrayList<String> parsed = new ArrayList<>();
-        String taskName = "";
-        info.remove(0);
-        for (String element : info) {
-            taskName += element + " ";
-        }
-        parsed.add(taskName);
-        return parsed;
-    }
-
-    /**
      * Parses the find task command.
      *
      * @param info the list of strings containing the command and arguments
