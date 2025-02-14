@@ -1,6 +1,10 @@
 package nana.logic;
 
 import java.util.ArrayList;
+
+/**
+ * The TaskList class manages a list of tasks and provides methods to manipulate and retrieve tasks.
+ */
 public class TaskList {
 
 
@@ -31,6 +35,13 @@ public class TaskList {
         taskCount = tasks.size();
     }
 
+    /**
+     * Processes a list of strings representing a command and its arguments.
+     *
+     * @param info the list of strings containing the command and arguments
+     * @return the result of processing the command
+     * @throws NanaException if an error occurs during processing
+     */
     public String process(ArrayList<String> info) throws NanaException {
         String input = info.get(0);
         String s = "";
@@ -60,6 +71,14 @@ public class TaskList {
         return s;
     }
 
+    /**
+     * Processes a list of strings representing a command and its arguments, with a specified completion status.
+     *
+     * @param info the list of strings containing the command and arguments
+     * @param isDone the completion status of the task
+     * @return the result of processing the command
+     * @throws NanaException if an error occurs during processing
+     */
     public String process(ArrayList<String> info, boolean isDone) throws NanaException {
         String input = info.get(0);
 
@@ -77,6 +96,12 @@ public class TaskList {
         return s;
     }
 
+    /**
+     * Finds tasks that match the given keyword.
+     *
+     * @param parsed the list of strings containing the keyword to find
+     * @return a string representation of the matching tasks
+     */
     public String findTask(ArrayList<String> parsed) {
         ArrayList<Task> matchTasks = new ArrayList<>();
         for (Task task : tasks) {
@@ -100,6 +125,12 @@ public class TaskList {
         return txt;
     }
 
+    /**
+     * Adds a new todo task.
+     *
+     * @param parsed the list of strings containing the task description
+     * @return a string representation of the added task
+     */
     public String addTodo(ArrayList<String> parsed) {
         tasks.add(new Todo(parsed.get(0)));
         addCount();
@@ -108,6 +139,13 @@ public class TaskList {
         return s;
     }
 
+    /**
+     * Adds a new todo task with a specified completion status.
+     *
+     * @param parsed the list of strings containing the task description
+     * @param isDone the completion status of the task
+     * @return a string representation of the added task
+     */
     public String addTodo(ArrayList<String> parsed, boolean isDone) {
         tasks.add(new Todo(parsed.get(0), isDone));
         addCount();
@@ -116,6 +154,12 @@ public class TaskList {
         return s;
     }
 
+    /**
+     * Adds a new deadline task.
+     *
+     * @param parsed the list of strings containing the task description and deadline
+     * @return a string representation of the added task
+     */
     public String addDeadline(ArrayList<String> parsed) {
         tasks.add(new Deadline(parsed.get(0), parsed.get(1)));
         addCount();
@@ -124,6 +168,13 @@ public class TaskList {
         return s;
     }
 
+    /**
+     * Adds a new deadline task with a specified completion status.
+     *
+     * @param parsed the list of strings containing the task description and deadline
+     * @param isDone the completion status of the task
+     * @return a string representation of the added task
+     */
     public String addDeadline(ArrayList<String> parsed, boolean isDone) {
         tasks.add(new Deadline(parsed.get(0), parsed.get(1), isDone));
         addCount();
@@ -132,6 +183,12 @@ public class TaskList {
         return s;
     }
 
+    /**
+     * Adds a new event task.
+     *
+     * @param parsed the list of strings containing the task description, start time, and end time
+     * @return a string representation of the added task
+     */
     public String addEvent(ArrayList<String> parsed) {
         tasks.add(new Event(parsed.get(0), parsed.get(1), parsed.get(2)));
         addCount();
@@ -140,6 +197,13 @@ public class TaskList {
         return s;
     }
 
+    /**
+     * Adds a new event task with a specified completion status.
+     *
+     * @param parsed the list of strings containing the task description, start time, and end time
+     * @param isDone the completion status of the task
+     * @return a string representation of the added task
+     */
     public String addEvent(ArrayList<String> parsed, boolean isDone) {
         tasks.add(new Event(parsed.get(0), parsed.get(1), parsed.get(2), isDone));
         addCount();
@@ -148,6 +212,12 @@ public class TaskList {
         return s;
     }
 
+    /**
+     * Deletes a task by its index.
+     *
+     * @param index the index of the task to be deleted
+     * @return a string representation of the deleted task
+     */
     public String deleteTask(int index) {
         Task task = tasks.get(index - 1);
         tasks.remove(index - 1);
@@ -171,6 +241,12 @@ public class TaskList {
         return s;
     }
 
+    /**
+     * Adds a new task.
+     *
+     * @param parsed the list of strings containing the task description
+     * @return a string representation of the added task
+     */
     public String addTask(ArrayList<String> parsed) {
         tasks.add(new Task(parsed.get(0)));
         addCount();
@@ -179,6 +255,13 @@ public class TaskList {
         return s;
     }
 
+    /**
+     * Adds a new task with a specified completion status.
+     *
+     * @param parsed the list of strings containing the task description
+     * @param isDone the completion status of the task
+     * @return a string representation of the added task
+     */
     public String addTask(ArrayList<String> parsed, boolean isDone) {
         tasks.add(new Task(parsed.get(0), isDone));
         addCount();

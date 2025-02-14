@@ -88,12 +88,22 @@ public class Task {
         this.isDone = false;
     }
 
+    /**
+     * Returns the priority of the task.
+     *
+     * @return the priority of the task
+     */
     public Priority getPriority() {
         return priority;
     }
 
+    /**
+     * Sets the priority of the task.
+     *
+     * @param priority the priority to set
+     */
     public void setPriority(Priority priority) {
         this.priority = priority;
     }
-    
+
 }

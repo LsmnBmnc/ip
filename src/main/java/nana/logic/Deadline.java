@@ -22,6 +22,7 @@ public class Deadline extends Task {
         super(description);
         this.byString = by;
         this.by = LocalDate.parse(by);
+        priority = Priority.MEDIUM;
     }
 
     /**
@@ -35,6 +36,7 @@ public class Deadline extends Task {
         super(description, isDone);
         this.byString = by;
         this.by = LocalDate.parse(by);
+        priority = Priority.MEDIUM;
     }
 
     /**

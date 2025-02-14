@@ -1,8 +1,19 @@
 package nana.logic;
 
 import java.util.ArrayList;
+
+/**
+ * The Parser class provides methods to parse user input into commands and arguments.
+ */
 public class Parser {
 
+    /**
+     * Parses the mark task command.
+     *
+     * @param info the list of strings containing the command and arguments
+     * @return the index of the task to be marked
+     * @throws NanaException if the task index is not provided
+     */
     public static int parseMarkTask(ArrayList<String> info) throws NanaException {
         if (info.size() == 1) {
             throw new NanaException("The marked task can't be empty.");
@@ -11,6 +22,13 @@ public class Parser {
 
     }
 
+    /**
+     * Parses the unmark task command.
+     *
+     * @param info the list of strings containing the command and arguments
+     * @return the index of the task to be unmarked
+     * @throws NanaException if the task index is not provided
+     */
     public static int parseUnmarkTask(ArrayList<String> info) throws NanaException {
         if (info.size() == 1) {
             throw new NanaException("The unmarked task can't be empty.");
@@ -19,6 +37,13 @@ public class Parser {
 
     }
 
+    /**
+     * Parses the add todo command.
+     *
+     * @param info the list of strings containing the command and arguments
+     * @return a list of strings containing the parsed task description
+     * @throws NanaException if the task description is not provided
+     */
     public static ArrayList<String> parseAddTodo(ArrayList<String> info) throws NanaException {
 
         if (info.size() == 1) {
@@ -36,6 +61,13 @@ public class Parser {
 
     }
 
+    /**
+     * Parses the add deadline command.
+     *
+     * @param info the list of strings containing the command and arguments
+     * @return a list of strings containing the parsed task description and deadline
+     * @throws NanaException if the task description or deadline is not provided
+     */
     public static ArrayList<String> parseAddDeadline(ArrayList<String> info) throws NanaException {
 
         if (info.size() == 1) {
@@ -59,6 +91,13 @@ public class Parser {
         return parsed;
     }
 
+    /**
+     * Parses the add event command.
+     *
+     * @param info the list of strings containing the command and arguments
+     * @return a list of strings containing the parsed task description, start time, and end time
+     * @throws NanaException if the task description, start time, or end time is not provided
+     */
     public static ArrayList<String> parseAddEvent(ArrayList<String> info) throws NanaException {
         if (info.size() == 1) {
             throw new NanaException("The description of an event cannot be empty.");
@@ -83,6 +122,13 @@ public class Parser {
         return parsed;
     }
 
+    /**
+     * Parses the delete task command.
+     *
+     * @param info the list of strings containing the command and arguments
+     * @return the index of the task to be deleted
+     * @throws NanaException if the task index is not provided
+     */
     public static int parseDeleteTask(ArrayList<String> info) throws NanaException {
         if (info.size() == 1) {
             throw new NanaException("The deleted task can't be empty.");
@@ -91,6 +137,13 @@ public class Parser {
 
     }
 
+    /**
+     * Parses the add task command.
+     *
+     * @param info the list of strings containing the command and arguments
+     * @return a list of strings containing the parsed task description
+     * @throws NanaException if the task description is not provided
+     */
     public static ArrayList<String> parseAddTask(ArrayList<String> info) throws NanaException {
         if (info.size() == 1) {
             throw new NanaException("The description of a task cannot be empty.");
@@ -106,6 +159,13 @@ public class Parser {
         return parsed;
     }
 
+    /**
+     * Parses the find task command.
+     *
+     * @param info the list of strings containing the command and arguments
+     * @return a list of strings containing the parsed keyword to find
+     * @throws NanaException if the keyword is not provided
+     */
     public static ArrayList<String> parseFindTask(ArrayList<String> info) throws NanaException {
         if (info.size() == 1) {
             throw new NanaException("The keyword to find cannot be empty.");
