@@ -83,6 +83,8 @@ public class TaskList {
         String input = info.get(0);
 
         String s = "";
+        assert input.equals("todo") || input.equals("deadline")
+                || input.equals("event") : "Task type should be specified";
 
         if (input.equals("todo")) {
             s = addTodo(Parser.parseAddTodo(info), isDone);
