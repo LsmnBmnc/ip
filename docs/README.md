@@ -43,15 +43,15 @@ Expected output:
 
 Add an event by providing the task description and the beginning time and ending time.
 
-Example: `event final exam /from 2 p.m. /to 4 p.m`
+Example: `event final exam /from Monday /to Wendesday`
 
 Expected output:
 
 ```
     ____________________________________________________________
      Got it. I've added this task:
-       [D][ ]Assignment 1  (by:Feb 19 2025)
-     Now you have 2 tasks in the list.
+       [E][ ]final exam  (from: /from Monday to:Wendesday)
+     Now you have 3 tasks in the list.
     ____________________________________________________________
 ```
 
@@ -59,7 +59,7 @@ Expected output:
 
 Search for tasks by providing a keyword.
 
-Example: `find study`
+Example: `final exam`
 
 Expected output if task is found:
 
@@ -79,9 +79,41 @@ Example: `delete 2`
 Expected output if task is found:
 
 ```
-    ____________________________________________________________
+   ____________________________________________________________
      Noted. I've removed this task:
-       [E][ ]study  (from: /from Monday to:Tuesday)
-     Now you have 3 tasks in the list.
+       [D][ ]Assignment 1  (by:Feb 19 2025)
+     Now you have 2 tasks in the list.
     ____________________________________________________________
+```
+
+## Marking Tasks as Done
+
+Mark a task as done by providing the task index in the list.
+
+Example: `mark 1`
+
+Expected output if task is found:
+
+```
+   ____________________________________________________________
+     Nice! I've marked this task as done:
+       [X] sleep 
+    ____________________________________________________________
+
+```
+
+## Marking Tasks as Undone
+
+Mark a task as undone by providing the task index in the list.
+
+Example: `unmark 1`
+
+Expected output if task is found:
+
+```
+   ____________________________________________________________
+     Nice! I've marked this task as undone:
+       [ ] sleep 
+    ____________________________________________________________
+
 ```

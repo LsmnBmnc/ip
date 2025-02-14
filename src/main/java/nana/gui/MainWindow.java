@@ -28,10 +28,6 @@ public class MainWindow extends AnchorPane {
     public void initialize() {
         dialogContainer.heightProperty().addListener((observable) -> scrollPane.setVvalue(1.0));
 
-        sendButton.setOnMouseClicked((event) -> {
-            handleUserInput();
-        });
-
         userInput.setOnAction((event) -> {
             handleUserInput();
         });
