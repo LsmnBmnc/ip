@@ -8,8 +8,6 @@ import java.io.IOException;
  */
 public class Nana {
 
-
-
     private Storage storage;
     private TaskList tasks;
     private Ui ui;

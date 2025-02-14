@@ -10,10 +10,12 @@ public class TaskList {
     public TaskList() {
         tasks = new ArrayList<>();
         taskCount = 0;
+        assert tasks != null : "Task list should be initialized";
     }
 
     public TaskList(ArrayList<ArrayList<String>> tasks) {
         this.tasks = new ArrayList<>();
+        assert tasks != null : "Input tasks should not be null";
 
         for (ArrayList<String> task : tasks) {
             boolean isDone = Boolean.parseBoolean(task.get(0));
