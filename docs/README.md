@@ -6,6 +6,23 @@
 
 Nana manages your tasks with priority efficiently by organizing them into three categories: Todos, Deadlines, and Events.
 
+
+## Adding todos
+
+Add a todo by providing the task description.
+
+Example: `todo sleep`
+
+Expected output:
+
+```
+    ____________________________________________________________
+     Got it. I've added this task:
+       [T][ ]sleep 
+     Now you have 1 tasks in the list.
+    ____________________________________________________________
+```
+
 ## Adding deadlines
 
 Add a deadline by providing the task description and the due date.
@@ -18,7 +35,23 @@ Expected output:
     ____________________________________________________________
      Got it. I've added this task:
        [D][ ]Assignment 1  (by:Feb 19 2025)
-     Now you have 4 tasks in the list.
+     Now you have 2 tasks in the list.
+    ____________________________________________________________
+```
+
+## Adding events
+
+Add an event by providing the task description and the beginning time and ending time.
+
+Example: `event final exam /from 2 p.m. /to 4 p.m`
+
+Expected output:
+
+```
+    ____________________________________________________________
+     Got it. I've added this task:
+       [D][ ]Assignment 1  (by:Feb 19 2025)
+     Now you have 2 tasks in the list.
     ____________________________________________________________
 ```
 
