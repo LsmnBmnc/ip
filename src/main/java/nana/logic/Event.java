@@ -20,6 +20,7 @@ public class Event extends Task {
         super(description);
         this.startTime = startTime;
         this.endTime = endTime;
+        priority = Priority.UPPER_QUARTILE;
     }
 
     /**
@@ -34,6 +35,7 @@ public class Event extends Task {
         super(description, isDone);
         this.startTime = startTime;
         this.endTime = endTime;
+        priority = Priority.UPPER_QUARTILE;
     }
 
     /**
